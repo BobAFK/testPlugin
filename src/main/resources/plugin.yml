@@ -1,0 +1,4 @@
+name: TestPlugin
+version: '${project.version}'
+main: me.sparky.testplugin.TestPlugin
+api-version: '1.20'
