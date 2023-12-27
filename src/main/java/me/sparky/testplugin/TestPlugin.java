@@ -16,6 +16,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Arrays;
 import java.util.Random;
+import java.util.concurrent.CompletableFuture;
 import java.util.logging.Logger;
 
 public class TestPlugin extends JavaPlugin implements Listener {
@@ -73,8 +74,10 @@ public class TestPlugin extends JavaPlugin implements Listener {
         }.runTaskLater(this, 1200L); // 20 ticks * 60 seconds
 
         // Log the information
-        Logger logger = this.getLogger();
-        logger.info("Spawned a diamond at " + location + " in world " + world.getName());
+        CompletableFuture.runAsync(() -> {
+            Logger logger = this.getLogger();
+            logger.info("Spawned a diamond at " + location + " in world " + world.getName());
+        });
     }
 }
 
